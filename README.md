@@ -227,7 +227,126 @@
 3. 为什么协程叫做协作式线程？因为协程之间是相互让步、相互协作的。由用户自行调度，内核无法干涉。线程对协程是一对多
 4. 协程优缺点![image-20240116193038369](README.assets/image-20240116193038369.png)![image-20240116193207653](README.assets/image-20240116193207653.png)
 
+### 2.2 存储系统详解
+
+#### 2.2.1 缓存
+
+1. 层次结构![image-20240117144111314](README.assets/image-20240117144111314.png)
+2. 局部性原理![image-20240117144139745](README.assets/image-20240117144139745.png)![image-20240117144257580](README.assets/image-20240117144257580.png)![image-20240117144449127](README.assets/image-20240117144449127.png)![image-20240117144531640](README.assets/image-20240117144531640.png)
+3. 缓存的设计![image-20240117144838439](README.assets/image-20240117144838439.png)
+
+#### 2.2.2 虚拟内存
+
+1. 概述![image-20240117145225919](README.assets/image-20240117145225919.png)![image-20240117145306464](README.assets/image-20240117145306464.png)![image-20240117145546399](README.assets/image-20240117145546399.png)![image-20240117145813190](README.assets/image-20240117145813190.png)![image-20240117145922380](README.assets/image-20240117145922380.png)
+2. 当缓存没有数据时![image-20240117150046494](README.assets/image-20240117150046494.png)
+3. 当主存没有数据时![image-20240117150154608](README.assets/image-20240117150154608.png)
+4. 总结![image-20240117150246179](README.assets/image-20240117150246179.png)
+
+#### 2.2.3 缺页中断
+
+1. 操作系统如何管理进程空间
+2. 内存管理
+   1. 页式存储管理
+   2. 段氏存储管理
+   3. 段页式存储管理
+3. 页式存储管理![image-20240117150733780](README.assets/image-20240117150733780.png)![image-20240117150838780](README.assets/image-20240117150838780.png)![image-20240117151001416](README.assets/image-20240117151001416.png)![image-20240117151142749](README.assets/image-20240117151142749.png)![image-20240117151248972](README.assets/image-20240117151248972.png)
+4. 段氏存储管理![image-20240117151347761](README.assets/image-20240117151347761.png)![image-20240117151517826](README.assets/image-20240117151517826.png)
+5. 段页式存储管理![image-20240117151557250](README.assets/image-20240117151557250.png)![image-20240117151643189](README.assets/image-20240117151643189.png)![image-20240117151730254](README.assets/image-20240117151730254.png)
+6. 缺页中断![image-20240117152021305](README.assets/image-20240117152021305.png)系统调用属于内核态
+
+#### 2.2.4 页面置换算法
+
+1. 页面置换时机![image-20240117152343829](README.assets/image-20240117152343829.png)
+2. 缓存置换算法
+   1. 先进先出 FIFO
+   2. 最近最少使用 LRU
+   3. 最不经常使用 LFU
+3. 先进先出，类似队列![image-20240117152756402](README.assets/image-20240117152756402.png)
+4. 最不经常使用 ![image-20240117152929094](README.assets/image-20240117152929094.png)![image-20240117153010386](README.assets/image-20240117153010386.png)![image-20240117153107778](README.assets/image-20240117153107778.png)
+5. 最近最少使用![image-20240117153135926](README.assets/image-20240117153135926.png)![image-20240117153345148](README.assets/image-20240117153345148.png)跟FIFO类似，但FIFO是严格的队列。而LRU是会“插队”的  
+
+
+
+#### 2.2.5 软链接与硬链接
+
+1. 常见文件系统![image-20240117153632232](README.assets/image-20240117153632232.png)
+2. FAT![image-20240117153803559](README.assets/image-20240117153803559.png)![image-20240117153927688](README.assets/image-20240117153927688.png)
+3. NTFS![image-20240117154012553](README.assets/image-20240117154012553.png)
+4. EXT![image-20240117154042291](README.assets/image-20240117154042291.png)![image-20240117154145678](README.assets/image-20240117154145678.png)![image-20240117154206851](README.assets/image-20240117154206851.png)![image-20240117154232871](README.assets/image-20240117154232871.png)![image-20240117154256178](README.assets/image-20240117154256178.png)![image-20240117154419043](README.assets/image-20240117154419043.png)![image-20240117154447630](README.assets/image-20240117154447630.png)![image-20240117154527305](README.assets/image-20240117154527305.png)![image-20240117154558633](README.assets/image-20240117154558633.png)![image-20240117154628189](README.assets/image-20240117154628189.png)
+5. 软链接-硬链接![image-20240117154801762](README.assets/image-20240117154801762.png)![image-20240117154903736](README.assets/image-20240117154903736.png)![image-20240117154928309](README.assets/image-20240117154928309.png)
+
+#### 2.2.6 磁盘冗余阵列
+
+1. RAID是什么![image-20240117155212382](README.assets/image-20240117155212382.png)
+2. RAID 0![image-20240117155327717](README.assets/image-20240117155327717.png)![image-20240117155420730](README.assets/image-20240117155420730.png)
+3. RAID 1![image-20240117155537626](README.assets/image-20240117155537626.png)![image-20240117155630977](README.assets/image-20240117155630977.png)
+4. RAID 5![image-20240117155655948](README.assets/image-20240117155655948.png)![image-20240117155837904](README.assets/image-20240117155837904.png)
+5. RAID 10![image-20240117155907424](README.assets/image-20240117155907424.png)![image-20240117155934806](README.assets/image-20240117155934806.png)
+6. 对比![image-20240117155954638](README.assets/image-20240117155954638.png)
+
 ##  三、计算机系统
+
+### 3.1 锁、同步与通信
+
+#### 3.1.1 死锁
+
+1. 定义![image-20240117181512411](README.assets/image-20240117181512411.png)
+
+2. 产生原因
+
+   1. 竞争资源
+
+      1. 共享资源资源数量不满足各个进程需求
+      2. 各个进程之间发生资源竞争导致死锁![image-20240117181753133](README.assets/image-20240117181753133.png)
+
+   2. 进程调度顺序不当![image-20240117181859904](README.assets/image-20240117181859904.png)
+
+   3. 死锁的四个必要条件
+
+      1. 互斥条件
+         1. 进程对资源的使用是**排他性的使用**
+         2. 某资源只能由一个进程使用，其他进程需要使用只能等待
+      2. 请求保持条件
+         1. 进程至少保持一个资源，又提出新的资源请求
+         2. 新资源被占用，请求被阻塞
+         3. 被阻塞的进程不释放自己保持的资源
+      3. 不可剥夺条件
+         1. 进程获得的资源在未完成使用前不能被剥夺
+         2. 获得的资源只能由进程自身释放
+      4. 环路等待条件![image-20240117182415356](README.assets/image-20240117182415356.png)
+      5. 预防死锁方法，破坏以上原因(除开互斥)![image-20240117182616859](README.assets/image-20240117182616859.png)![image-20240117182632419](README.assets/image-20240117182632419.png)![image-20240117182738448](README.assets/image-20240117182738448.png)
+      6. 银行家算法![image-20240117182901384](README.assets/image-20240117182901384.png)
+
+#### 3.1.2 线程-进程同步问题
+
+  1. 生产者-消费者问题![image-20240117183755020](README.assets/image-20240117183755020.png)![image-20240117183842749](README.assets/image-20240117183842749.png)![image-20240117184110616](README.assets/image-20240117184110616.png)
+  2. 读者-写者问题![image-20240117184524253](README.assets/image-20240117184524253.png)![image-20240117184557267](README.assets/image-20240117184557267.png)
+  3. 哲学家进餐问题![image-20240117184809397](README.assets/image-20240117184809397.png)![image-20240117184944327](README.assets/image-20240117184944327.png)
+  4. 临界资源![image-20240117185128152](README.assets/image-20240117185128152.png)
+  5. 原子性![image-20240117185220713](README.assets/image-20240117185220713.png)
+     
+      
+#### 3.1.3 乐观锁、悲观锁与可重入锁
+
+1. 特点![image-20240117185901201](README.assets/image-20240117185901201.png)![image-20240117190105231](README.assets/image-20240117190105231.png)这四个的重要性依次递增
+2. 公平锁/非公平锁![image-20240117190240980](README.assets/image-20240117190240980.png)![image-20240117190348602](README.assets/image-20240117190348602.png)
+3. 可重入锁/非可重入锁![image-20240117190505026](README.assets/image-20240117190505026.png)![image-20240117190556507](README.assets/image-20240117190556507.png)
+4. 共享锁和排他锁![image-20240117190634806](README.assets/image-20240117190634806.png)![image-20240117190724721](README.assets/image-20240117190724721.png)读线程使用共享锁，写线程使用排他锁
+
+​      
+
+
+
+#### 3.1.4 线程间通信方式
+
+1. 互斥锁![image-20240117191036226](README.assets/image-20240117191036226.png)![image-20240117191134613](README.assets/image-20240117191134613.png)![image-20240117191232828](README.assets/image-20240117191232828.png)
+2. 自旋锁![image-20240117191320951](README.assets/image-20240117191320951.png)![image-20240117191355289](README.assets/image-20240117191355289.png)![image-20240117191604708](README.assets/image-20240117191604708.png)**会不会让出CPU是自旋锁与互斥锁的区别**，这样的好处是![image-20240117191654790](README.assets/image-20240117191654790.png)
+3. 读写锁![image-20240117191822074](README.assets/image-20240117191822074.png)![image-20240117191915681](README.assets/image-20240117191915681.png)
+4. 条件变量![image-20240117192027906](README.assets/image-20240117192027906.png)![image-20240117192122337](README.assets/image-20240117192122337.png)
+
+
+
+### 3.1.5 进程间通信
 
 ## 四、算法与数据结构
 
