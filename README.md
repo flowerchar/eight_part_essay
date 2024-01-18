@@ -346,10 +346,166 @@
 
 
 
-### 3.1.5 进程间通信
+#### 3.1.5 进程间通信
+
+1. 进程与线程的区别![image-20240118122040388](README.assets/image-20240118122040388.png)因为进程间的资源是相互独立的，所以线程间通信方式不适用
+2. 进程间通信的方法
+   1. 管道![image-20240118122506124](README.assets/image-20240118122506124.png)![image-20240118122602502](README.assets/image-20240118122602502.png)
+   2. 消息队列![image-20240118122723136](README.assets/image-20240118122723136.png)![image-20240118122812664](README.assets/image-20240118122812664.png)
+   3. 共享内存![image-20240118122931583](README.assets/image-20240118122931583.png)![image-20240118123029185](README.assets/image-20240118123029185.png)
+   4. 信号![image-20240118123133291](README.assets/image-20240118123133291.png)![image-20240118123212930](README.assets/image-20240118123212930.png)
+   5. 套接字![image-20240118123331324](README.assets/image-20240118123331324.png)![image-20240118123408725](README.assets/image-20240118123408725.png)![image-20240118123520705](README.assets/image-20240118123520705.png)![image-20240118123601169](README.assets/image-20240118123601169.png)![image-20240118123652642](README.assets/image-20240118123652642.png)前者是server端，后者是client端
+
+
+
+#### 3.1.6 CAS原理与无锁技术
+
+1. 锁的弊端![image-20240118124012197](README.assets/image-20240118124012197.png)
+2. CAS技术![image-20240118124132301](README.assets/image-20240118124132301.png)![image-20240118124257425](README.assets/image-20240118124257425.png)![image-20240118124337566](README.assets/image-20240118124337566.png)
+3. CAS与无锁队列![image-20240118124519110](README.assets/image-20240118124519110.png)![image-20240118124634656](README.assets/image-20240118124634656.png)
+4. CAS弊端![image-20240118124802618](README.assets/image-20240118124802618.png)![image-20240118124902874](README.assets/image-20240118124902874.png)解决方法：像Java一样增加一个版本号，如果发生改变那么就有变化
+
+
+
+
+
+#### 3.1.7 分布式锁实现
+
+1. 应用场景
+   1. 订单系统，秒杀系统
+   2. 积分系统，消费系统
+   3. 消息中间件，服务中间件，数据发布-订阅
+   4. 分布式部署：集群、微服务
+   5. 服务节点之间需要通信
+   6. 数据强一致要求，性能要求，并发量要求
+2. redis![image-20240118125453761](README.assets/image-20240118125453761.png)![image-20240118125729734](README.assets/image-20240118125729734.png)
+3. Zookeeper![image-20240118125830575](README.assets/image-20240118125830575.png)![image-20240118130130958](README.assets/image-20240118130130958.png)
+4. MYSQL![image-20240118130337459](README.assets/image-20240118130337459.png)
+5. 分布式锁框架![image-20240118130403787](README.assets/image-20240118130403787.png)
+
+
+
+
+
+### 3.2 编程语言与运行原理
+
+ #### 3.2.1 计算机层次结构
+
+1. 一个复杂的系统应该有清洗明确的分层设计
+2. 层次 ![image-20240118133809651](README.assets/image-20240118133809651.png)![image-20240118133924685](README.assets/image-20240118133924685.png)![image-20240118134023978](README.assets/image-20240118134023978.png)![image-20240118134116565](README.assets/image-20240118134116565.png)![image-20240118134213183](README.assets/image-20240118134213183.png)
+
+
+
+#### 3.2.2 编译与解释
+
+1. ![image-20240118135237273](README.assets/image-20240118135237273.png)
+2. 编译型
+   1. C/C++
+   2. Object-C
+   3. Golang
+3. 解释型
+   1. Python(像Java，不是纯粹的解释语言)
+   2. Php
+   3. Javascript
+4. 虚拟机![image-20240118135557103](README.assets/image-20240118135557103.png)![image-20240118135746750](README.assets/image-20240118135746750.png)![image-20240118135926776](README.assets/image-20240118135926776.png)
+
+
+
+#### 3.2.3 编译器原理
+
+1. 编译器运行![image-20240118141507342](README.assets/image-20240118141507342.png)![image-20240118141701752](README.assets/image-20240118141701752.png)![image-20240118141811357](README.assets/image-20240118141811357.png)![image-20240118141907749](README.assets/image-20240118141907749.png)![image-20240118142024841](README.assets/image-20240118142024841.png)![image-20240118142109673](README.assets/image-20240118142109673.png)![image-20240118142226191](README.assets/image-20240118142226191.png)
+
+
+
+#### 3.2.4 程序运行原理
+
+1. CPU体系![image-20240118142920961](README.assets/image-20240118142920961.png)
+2. 程序运行过程![image-20240118143148746](README.assets/image-20240118143148746.png)![image-20240118143228183](README.assets/image-20240118143228183.png)![image-20240118143313853](README.assets/image-20240118143313853.png)![image-20240118143354196](README.assets/image-20240118143354196.png)![image-20240118143507408](README.assets/image-20240118143507408.png)![image-20240118143934405](README.assets/image-20240118143934405.png)![image-20240118144032457](README.assets/image-20240118144032457.png)
+3. JIT技术![image-20240118144207810](README.assets/image-20240118144207810.png)
+
+
+
+#### 3.2.5 链接方式
+
+1. 动态/静态链接![image-20240118150914773](README.assets/image-20240118150914773.png)![image-20240118151053519](README.assets/image-20240118151053519.png)
+
+2. 目标文件![image-20240118151327733](README.assets/image-20240118151327733.png)
+
+3. 静态链接![image-20240118151605961](README.assets/image-20240118151605961.png)
+
+4. 动态链接![image-20240118151548514](README.assets/image-20240118151548514.png)
+
+5. 动态链接与装载![image-20240118151740892](README.assets/image-20240118151740892.png)
+
+6. 两者对比![image-20240118151815664](README.assets/image-20240118151815664.png)
+
+   
 
 ## 四、算法与数据结构
 
+### 4.1 链表、栈、队列与二叉树
+
+#### 4.1.1 时间/空间复杂度
+
+1. ![image-20240118153854728](README.assets/image-20240118153854728.png)
+2. 取去掉系数的最高阶![image-20240118154019359](README.assets/image-20240118154019359.png)
+3. ![image-20240118154225402](README.assets/image-20240118154225402.png)因为前者sum的空间就一个，只不过是经常变值而已
+4. 空间跟时间相互驳斥![image-20240118154938341](README.assets/image-20240118154938341.png)
+
+
+
+#### 4.1.2 链表
+
+1. 定义![image-20240118155242138](README.assets/image-20240118155242138.png)
+2. 链表
+   1. 数据域
+   2. 指针域 
+
+
+
+#### 4.1.3 链表算法题
+
+1. LeetCode 206.反转链表![image-20240118174203063](README.assets/image-20240118174203063.png)![image-20240118174320082](README.assets/image-20240118174320082.png)![image-20240118174331481](README.assets/image-20240118174331481.png)![image-20240118174418707](README.assets/image-20240118174418707.png)![image-20240118174426631](README.assets/image-20240118174426631.png)![image-20240118174512978](README.assets/image-20240118174512978.png)![image-20240118174542391](README.assets/image-20240118174542391.png)最后一步已经跳出循环了，但是最后一个还没有逆序
+2. LeetCode 92![image-20240118180021458](README.assets/image-20240118180021458.png)
+
 ## 五、数据库
+
+### 5.1 DB、表、视图、事务与函数
+
+#### 5.1.1 关系型数据库
+
+1. ![image-20240118182159849](README.assets/image-20240118182159849.png)![image-20240118182408833](README.assets/image-20240118182408833.png)
+2. NoSQL![image-20240118182553045](README.assets/image-20240118182553045.png)
+3. key-value数据库![image-20240118182645729](README.assets/image-20240118182645729.png)
+4. 文档数据库![image-20240118182916384](README.assets/image-20240118182916384.png)
+5. 列存储数据库![image-20240118183005965](README.assets/image-20240118183005965.png)![image-20240118183211882](README.assets/image-20240118183211882.png)
+6. 图数据库![image-20240118183306484](README.assets/image-20240118183306484.png)
+
+
+
+#### 5.1.2 数据库设计、创建、维护
+
+1. ![image-20240118183843236](README.assets/image-20240118183843236.png)
+2. ![image-20240118184505428](README.assets/image-20240118184505428.png)
+3. ![image-20240118184826881](README.assets/image-20240118184826881.png)
+
+
+
+#### 5.1.3 数据表设计、创建、维护
+
+1. 官方实例![image-20240118185043203](README.assets/image-20240118185043203.png)
+2. ![image-20240118185247270](README.assets/image-20240118185301830.png)![image-20240118185317771](README.assets/image-20240118185317771.png)![image-20240118185541592](README.assets/image-20240118185541592.png)
+3. ![image-20240118185958398](README.assets/image-20240118185958398.png)
+4. ![image-20240118190233060](README.assets/image-20240118190233060.png)
+
+
+
+#### 5.1.4 char、varchar和text
+
+1. MYSQL类型![image-20240118191550509](README.assets/image-20240118191550509.png)
+2. 数字类型![image-20240118192043075](README.assets/image-20240118192043075.png)
+3. 日期类型![image-20240118192254369](README.assets/image-20240118192254369.png)
+4. 字符串类型![image-20240118192329524](README.assets/image-20240118192329524.png)![image-20240118192642751](README.assets/image-20240118192642751.png)
+5. JSON ![image-20240118193045305](README.assets/image-20240118193045305.png)
 
 ## 六、编程能力
