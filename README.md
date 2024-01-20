@@ -655,3 +655,5 @@ TODO
 5. 接口隔离原则![image-20240119204352707](README.assets/image-20240119204352707.png)
 6. 迪米特原则![image-20240119204554171](README.assets/image-20240119204554171.png)
 7. 合成复用原则![image-20240119204712057](README.assets/image-20240119204712057.png)
+
+## 七、
